@@ -1,0 +1,58 @@
+
+$fa-font-path: "/bower_components/font-awesome/fonts";
+
+@import '../bower_components/font-awesome/scss/font-awesome';
+@import "../bower_components/susy/sass/susy";
+@import "../bower_components/breakpoint-sass/stylesheets/breakpoint";
+
+/**
+ * App-wide Styles
+ */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+
+// Component styles are injected through grunt
+// injector
+@import 'home/home.scss';
+@import 'login/login.scss';
+@import 'main/main.scss';
+@import 'sign-up/icg-sign-up-form/icg-sign-up-form.scss';
+@import 'sign-up/sign-up.scss';
+@import 'ht-account-form/ht-account-form.scss';
+// endinjector
+
+// Configuring Susy Defaults
+$susy: (
+  global-box-sizing: border-box
+);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #fff;
+  color: #555;
+  font-family: 'Lato', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+$small-screen: 600px;

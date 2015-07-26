@@ -1,0 +1,22 @@
+<div layout
+     layout-align="center center">
+
+  <ht-account-form title="Hints"
+                   error="vm.error"
+                   account="vm.account"
+                   flex="66"
+                   flex-offset="33">
+    <md-button class="md-raised md-primary"
+               flex
+               ng-click="vm.login(vm.account)">
+      Login
+    </md-button>
+
+    <md-button class="md-raised md-accent"
+               flex
+               ui-sref="sign-up">
+      Create a new account
+    </md-button>
+  </ht-account-form>
+
+</div>

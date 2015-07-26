@@ -1,0 +1,34 @@
+<md-card>
+  <h1>{{vm.title}}</h1>
+  <md-card-content>
+
+    <div ng-show="vm.error.reason">
+      <div>{{vm.error.reason}}</div>
+    </div>
+
+    <form name="signUpForm" novalidate layout="column">
+      <md-input-container>
+        <label>Email</label>
+        <input required name="email" type="email" ng-model="vm.account.email">
+
+        <div ng-messages="signUpForm.email.$error" ng-show="signUpForm.email.$dirty">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="email">This should be a valid email address.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Password</label>
+        <input required name="password" type="password" ng-model="vm.account.password">
+
+        <div ng-messages="signUpForm.password.$error" ng-show="signUpForm.password.$dirty">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+    </form>
+
+  </md-card-content>
+
+  <ng-transclude></ng-transclude>
+
+</md-card>
