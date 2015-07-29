@@ -1,9 +1,9 @@
 'use strict';
 
-describe('Controller: SignUpCtrl', function () {
+describe('Controller: LoginCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('hintsApp'));
+  beforeEach(module('hintsApp.account'));
   beforeEach(module('hintsApp.mocks'));
 
   //inject mock services
@@ -13,11 +13,11 @@ describe('Controller: SignUpCtrl', function () {
     $state = _$state_;
   }));
 
-  var SignUpCtrl, scope;
+  var LoginCtrl, scope;
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    SignUpCtrl = $controller('SignUpCtrl', {
+    LoginCtrl = $controller('LoginCtrl', {
       $scope: scope
     });
   }));
@@ -27,40 +27,39 @@ describe('Controller: SignUpCtrl', function () {
   beforeEach(inject(($q) => {
     authDeferred = $q.defer();
     stateDeferred = $q.defer();
-    spyOn(auth, 'register').and.returnValue(authDeferred.promise);
+    spyOn(auth, 'login').and.returnValue(authDeferred.promise);
     spyOn($state, 'go').and.returnValue(stateDeferred.promise);
   }));
 
   describe('State', () => {
     it('should expose account object to the view', () => {
-      expect(angular.isObject(SignUpCtrl.account)).toBe(true);
-      expect(angular.isString(SignUpCtrl.account.username)).toBe(true);
-      expect(angular.isString(SignUpCtrl.account.password)).toBe(true);
+      expect(angular.isObject(LoginCtrl.account)).toBe(true);
+      expect(angular.isString(LoginCtrl.account.username)).toBe(true);
+      expect(angular.isString(LoginCtrl.account.password)).toBe(true);
     });
 
 
     it('should expose error object to the view', () => {
-      expect(angular.isObject(SignUpCtrl.error)).toBe(true);
-      expect(angular.isString(SignUpCtrl.error.reason)).toBe(true);
+      expect(angular.isObject(LoginCtrl.error)).toBe(true);
     });
 
 
-    it('should expose createAccount method to the view', () => {
-      expect(angular.isFunction(SignUpCtrl.createAccount)).toBe(true);
+    it('should expose login method to the view', () => {
+      expect(angular.isFunction(LoginCtrl.login)).toBe(true);
     });
   });
 
-  describe('createAccount()', () => {
+  describe('login()', () => {
 
     var promise;
     beforeEach(() => {
-      promise = SignUpCtrl.createAccount({});
+      promise = LoginCtrl.login({});
     });
 
 
     it('should call auth service', () => {
-      expect(auth.register).toHaveBeenCalled();
-      expect(auth.register.calls.count()).toBe(1);
+      expect(auth.login).toHaveBeenCalled();
+      expect(auth.login.calls.count()).toBe(1);
     });
 
 
@@ -92,7 +91,7 @@ describe('Controller: SignUpCtrl', function () {
       scope.$digest();
 
       expect(handler).toHaveBeenCalledWith(authReason);
-      expect(SignUpCtrl.error.reason).toEqual(authReason);
+      expect(LoginCtrl.error).toEqual(authReason);
     });
   });
 });

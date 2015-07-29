@@ -2,8 +2,8 @@
   <h1>{{vm.title}}</h1>
   <md-card-content>
 
-    <div ng-show="vm.error.reason">
-      <div>{{vm.error.reason}}</div>
+    <div ng-show="vm.error">
+      <div>{{vm.error.message}}</div>
     </div>
 
     <form name="signUpForm" novalidate layout="column">

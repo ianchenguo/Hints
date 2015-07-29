@@ -23,12 +23,6 @@
   function controller($state, auth) {
     var vm = this;
 
-
-    //vm.createAccount = function createAccount(account) {
-    //  return auth.register(account)
-    //    .then(() => $state.go('home'))
-    //    .catch((reason) => vm.error.reason = reason)
-    //};
   }
 
   function link(scope, element, attrs) {

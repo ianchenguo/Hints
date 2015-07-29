@@ -2,7 +2,8 @@
 
 angular
   .module('hintsApp', [
-    'hintsApp.core'
+    'hintsApp.core',
+    'hintsApp.account'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider

@@ -10,7 +10,8 @@ describe('Service: auth', function () {
   beforeEach(module(function ($provide) {
     firebaseAuth = {
       $authWithPassword: () => null,
-      $createUser: () => null
+      $createUser: () => null,
+      $requireAuth: () => null
     };
     $provide.value('firebaseAuth', firebaseAuth);
   }));
@@ -31,7 +32,9 @@ describe('Service: auth', function () {
     deferred = $q.defer();
     spyOn(firebaseAuth, '$authWithPassword').and.returnValue(deferred.promise);
     spyOn(firebaseAuth, '$createUser').and.returnValue(deferred.promise);
+    spyOn(firebaseAuth, '$requireAuth').and.returnValue(deferred.promise);
   });
+
 
   describe('login()', () => {
 
@@ -49,7 +52,7 @@ describe('Service: auth', function () {
       expect(firebaseAuth.$authWithPassword.calls.count()).toBe(1);
     });
 
-    it('should pass the response on success', () => {
+    it('should pass value on success', () => {
       var success = 'resolved';
       deferred.resolve(success);
 
@@ -62,7 +65,7 @@ describe('Service: auth', function () {
       expect(handler).toHaveBeenCalledWith(success);
     });
 
-    it('should reject the response on error', () => {
+    it('should reject with reason on error', () => {
       var error = 'rejected';
       deferred.reject(error);
 
@@ -76,9 +79,10 @@ describe('Service: auth', function () {
     });
   });
 
+
   describe('register()', () => {
 
-    var promise;
+    var promise, login;
     beforeEach(() => {
       promise = auth.register({});
     });
@@ -90,6 +94,51 @@ describe('Service: auth', function () {
     it('should call firebaseAuth', () => {
       expect(firebaseAuth.$createUser).toHaveBeenCalled();
       expect(firebaseAuth.$createUser.calls.count()).toBe(1);
+    });
+
+    it('should pass value on success', () => {
+      var success = 'resolved';
+      deferred.resolve(success);
+
+
+      var handler = jasmine.createSpy('success');
+
+      promise
+        .then(handler);
+      $rootScope.$digest();
+
+      expect(handler).toHaveBeenCalledWith(success);
+    });
+
+    it('should reject with response on error', () => {
+      var error = 'rejected';
+      deferred.reject(error);
+
+      var handler = jasmine.createSpy('error');
+
+      promise
+        .catch(handler);
+      $rootScope.$digest();
+
+      expect(handler).toHaveBeenCalledWith(error);
+    });
+  });
+
+
+  describe('requireAuth()', () => {
+
+    var promise;
+    beforeEach(() => {
+      promise = auth.requireAuth({});
+    });
+
+    it('should be defined', () => {
+      expect(auth.requireAuth).toBeDefined();
+    });
+
+    it('should call firebaseAuth', () => {
+      expect(firebaseAuth.$requireAuth).toHaveBeenCalled();
+      expect(firebaseAuth.$requireAuth.calls.count()).toBe(1);
     });
 
     it('should pass the response on success', () => {

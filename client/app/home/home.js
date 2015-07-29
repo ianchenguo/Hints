@@ -1,11 +1,14 @@
 'use strict';
+(function(){
+  angular.module('hintsApp')
+    .config(function ($stateProvider) {
+      $stateProvider
+        .state('home', {
+          url: '/home',
+          templateUrl: 'app/home/home.html',
+          controller: 'HomeCtrl as vm'
+        });
+    });
+}());
 
-angular.module('hintsApp')
-  .config(function ($stateProvider) {
-    $stateProvider
-      .state('home', {
-        url: '/home',
-        templateUrl: 'app/home/home.html',
-        controller: 'HomeCtrl'
-      });
-  });
+

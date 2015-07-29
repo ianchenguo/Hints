@@ -10,19 +10,26 @@
 
     var login = function login(account) {
       return firebaseAuth.$authWithPassword(account)
-        .then(success => success)
-        .catch(error => $q.reject(error));
+        .then(value => value)
+        .catch(reason => $q.reject(reason));
     };
 
     var register = function register(account) {
       return firebaseAuth.$createUser(account)
-        .then(user => login(account))
-        .catch(error => $q.reject(error));
+        .then(value => value)
+        .catch(reason => $q.reject(reason));
+    };
+
+    var requireAuth = function requireAuth() {
+      return firebaseAuth.$requireAuth()
+        .then(value => value)
+        .catch(reason => $q.reject(reason));
     };
 
     return {
       login: login,
-      register: register
+      register: register,
+      requireAuth: requireAuth
     };
   }
 }());
