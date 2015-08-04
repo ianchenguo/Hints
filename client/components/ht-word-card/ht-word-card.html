@@ -1,0 +1,121 @@
+<!--<md-card>-->
+<!--<md-card-content layout="column">-->
+
+<!--<ht-collapse-section title="Word">-->
+
+<!--<md-input-container md-no-float>-->
+<!--<md-select ng-model="vm.wordCard.wordType" placeholder="Type">-->
+<!--<md-option ng-value="opt" ng-repeat="opt in vm.wordTypes" required>{{ opt }}</md-option>-->
+<!--</md-select>-->
+<!--</md-input-container>-->
+
+<!--<md-input-container md-no-float>-->
+<!--<input name="word" ng-model="vm.wordCard.word" required placeholder="Word">-->
+<!--</md-input-container>-->
+<!--</ht-collapse-section>-->
+
+<!--<ht-collapse-section title="Question" collapse="true">-->
+<!--<md-input-container md-no-float>-->
+<!--<textarea name="question" ng-model="vm.wordCard.question" required md-maxlength="150" placeholder="Question"/>-->
+<!--</md-input-container>-->
+<!--</ht-collapse-section>-->
+
+<!--<ht-collapse-section title="Hints">-->
+<!--<md-tabs md-dynamic-height md-border-bottom>-->
+
+<!--<md-tab ng-repeat="hint in vm.wordCard.hints" label="Hint {{$index + 1}}">-->
+<!--<md-content class="md-padding">-->
+<!--<md-input-container md-no-float>-->
+<!--<textarea name="hint+{{$index+1}}" ng-model="hint.content" md-maxlength="150" placeholder="Hint"/>-->
+<!--</md-input-container>-->
+<!--</md-content>-->
+<!--</md-tab>-->
+<!--</md-tabs>-->
+<!--</ht-collapse-section>-->
+<!--</md-card-content>-->
+
+<!--<ng-transclude class="md-actions" layout="row" layout-align="end center"></ng-transclude>-->
+<!--</md-card>-->
+
+<!--&lt;!&ndash;<md-whiteframe layout="column"&ndash;&gt;-->
+<!--&lt;!&ndash;layout-fill&ndash;&gt;-->
+<!--&lt;!&ndash;layout-margin&ndash;&gt;-->
+<!--&lt;!&ndash;layout-padding&ndash;&gt;-->
+<!--&lt;!&ndash;layout-align="center"&ndash;&gt;-->
+<!--&lt;!&ndash;class="md-whiteframe-z1"&ndash;&gt;-->
+<!--&lt;!&ndash;style="background:white;opacity:0.8;">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<md-input-container>&ndash;&gt;-->
+<!--&lt;!&ndash;<label class="md-no-float">Word</label>&ndash;&gt;-->
+<!--&lt;!&ndash;<input name="word" ng-model="vm.wordCard.word" required>&ndash;&gt;-->
+<!--&lt;!&ndash;</md-input-container>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<md-input-container>&ndash;&gt;-->
+<!--&lt;!&ndash;<label class="md-no-float">Type</label>&ndash;&gt;-->
+<!--&lt;!&ndash;<md-select ng-model="vm.wordCard.wordType">&ndash;&gt;-->
+<!--&lt;!&ndash;<md-option ng-value="opt" ng-repeat="opt in vm.wordTypes" required>{{ opt }}</md-option>&ndash;&gt;-->
+<!--&lt;!&ndash;</md-select>&ndash;&gt;-->
+<!--&lt;!&ndash;</md-input-container>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<md-input-container>&ndash;&gt;-->
+<!--&lt;!&ndash;<label class="md-no-float">Question</label>&ndash;&gt;-->
+<!--&lt;!&ndash;<textarea name="question" ng-model="vm.wordCard.question" required md-maxlength="100" maxlength="100"/>&ndash;&gt;-->
+<!--&lt;!&ndash;</md-input-container>&ndash;&gt;-->
+
+<!--<md-tabs md-dynamic-height md-border-bottom>-->
+
+  <!--<md-tab ng-repeat="hint in vm.wordCard.hints" label="Hint {{$index + 1}}">-->
+    <!--<md-content class="md-padding">-->
+      <!--<md-input-container flex>-->
+        <!--<label class="md-no-float">Hint {{$index + 1}}</label>-->
+        <!--<textarea name="hint+{{$index+1}}" ng-model="hint.content" md-maxlength="100" maxlength="100"/>-->
+      <!--</md-input-container>-->
+    <!--</md-content>-->
+  <!--</md-tab>-->
+
+<!--</md-tabs>-->
+
+<!--&lt;!&ndash;</md-whiteframe>&ndash;&gt;-->
+
+<md-card>
+
+  <md-card-header>
+    Excellent adj.
+  </md-card-header>
+
+  <md-card-content>
+
+
+
+    <md-tabs md-border-bottom md-swipe-content>
+
+      <md-tab label="Word">
+        <md-input-container md-no-float>
+          <md-select ng-model="vm.wordCard.wordType" placeholder="Type">
+            <md-option ng-value="opt" ng-repeat="opt in vm.wordTypes" required>{{ opt }}</md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-input-container md-no-float>
+          <input name="word" ng-model="vm.wordCard.word" required placeholder="Word">
+        </md-input-container>
+      </md-tab>
+
+      <md-tab label="Question">
+        <md-input-container md-no-float>
+          <textarea name="question" ng-model="vm.wordCard.question" required md-maxlength="150" placeholder="Question"/>
+        </md-input-container>
+      </md-tab>
+
+      <md-tab label="Hints">
+        <md-content ng-repeat="hint in vm.wordCard.hints">
+          <md-input-container md-no-float>
+            <textarea name="hint{{$index}}" ng-model="hint.content" md-maxlength="100" maxlength="100" placeholder="Hint{{$index}}"/>
+          </md-input-container>
+        </md-content>
+      </md-tab>
+
+    </md-tabs>
+
+  </md-card-content>
+</md-card>

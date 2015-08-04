@@ -1,0 +1,14 @@
+<div layout="column">
+  <ht-embedded-button class="ht-collapse-section__title"
+                      ng-click="vm.toggleShow()"
+                      aria-labe="toggle collapsible content">
+    {{vm.title}}
+  </ht-embedded-button>
+
+  <div class="ht-collapse-section__main">
+    <div layout="column" class="ht-collapse-section__content" ng-show="vm.isOpen">
+      <icg-transclude></icg-transclude>
+    </div>
+  </div>
+</div>
+

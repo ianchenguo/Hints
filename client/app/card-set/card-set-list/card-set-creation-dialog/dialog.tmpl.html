@@ -1,0 +1,69 @@
+<md-dialog class="fullscreen-dialog"
+           aria-label="Create card set">
+
+  <form name="cardSetForm" novalidate>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+
+        <md-button class="md-icon-button ht-button--dialog-left" aria-label="Close dialog" ng-click="vm.hide()">
+          <md-icon md-font-library="material-icons">close</md-icon>
+        </md-button>
+
+        <h2>New card set</h2>
+        <span flex></span>
+
+        <md-button class="md-icon-button ht-button--dialog-right"
+                   aria-label="Save Card Set" ng-click="vm.createCardSet(vm.cardSet)">
+          Save
+        </md-button>
+
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+
+      <md-input-container>
+        <label>Title</label>
+        <input md-maxlength="20" required name="title" ng-model="vm.cardSet.title">
+
+        <div ng-messages="cardSetForm.title.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The title has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>
+
+
+      <md-input-container>
+        <label>Description</label>
+        <input md-maxlength="50" required name="description" ng-model="vm.cardSet.desc">
+
+        <div ng-messages="cardSetForm.description.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <!--<md-chips ng-model="vm.cardSet.tags" md-autocomplete-snap="">-->
+      <!--<md-autocomplete md-selected-item="ctrl.selectedItem" md-search-text="ctrl.searchText" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" placeholder="Search for a vegetable">-->
+      <!--<span md-highlight-text="ctrl.searchText">{{item.name}} :: {{item.type}}</span>-->
+      <!--</md-autocomplete>-->
+      <!--<md-chip-template>-->
+      <!--<span>-->
+      <!--<strong>{{$chip.name}}</strong>-->
+      <!--<em>({{$chip.type}})</em>-->
+      <!--{{$chip}}-->
+      <!--</span>-->
+      <!--</md-chip-template>-->
+      <!--</md-chips>-->
+
+
+      <md-chips
+        ng-model="vm.cardSet.tags"
+        placeholder="Enter a tag"
+        secondary-placeholder="+Tag">
+
+      </md-chips>
+
+    </md-dialog-content>
+
+  </form>
+</md-dialog>

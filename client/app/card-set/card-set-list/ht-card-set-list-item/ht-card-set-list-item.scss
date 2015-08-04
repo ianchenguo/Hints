@@ -1,0 +1,11 @@
+@import "compass/css3/flexbox";
+
+ht-card-set-list-item {
+  @include display-flex;
+  @include flex-direction(column);
+
+  div.md-avatar {
+    background: green;
+  }
+
+}

@@ -1,0 +1,12 @@
+@import "compass/css3/flexbox";
+
+$ht-toolbar__min-height:64px;
+
+ht-toolbar {
+  @include display-flex;
+  @include flex-direction(column);
+
+  position: relative;
+  min-height: $ht-toolbar__min-height;
+
+}

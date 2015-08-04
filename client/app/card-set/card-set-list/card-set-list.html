@@ -1,0 +1,21 @@
+<md-content>
+  <md-subheader>Card Sets</md-subheader>
+
+  <md-list>
+
+    <ht-card-set-list-item ng-repeat="item in [1,2,3,4,5,6,7,8,9,10]">
+
+    </ht-card-set-list-item>
+
+    <!-- list end placeholder-->
+    <ht-card-set-list-item></ht-card-set-list-item>
+
+  </md-list>
+
+</md-content>
+
+<md-button class="md-fab md-fab-bottom-right"
+           aria-label="Create card set"
+           ng-click="vm.createCardSet()">
+  <md-icon md-font-library="material-icons">add</md-icon>
+</md-button>

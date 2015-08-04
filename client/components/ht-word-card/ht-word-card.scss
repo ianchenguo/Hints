@@ -1,0 +1,43 @@
+////override md style
+//label.md-placeholder {
+//  position: relative !important;
+//  top: -2px !important;
+//
+//  padding:0 0 0 0 !important;
+//
+//  opacity: 1;
+//  pointer-events: auto !important;
+//  transform: translate3d(0, 0, 0);
+//  transition-property:none;
+//}
+@import "compass/css3/flexbox";
+
+$ht-word-card__width--small: 300px;
+$ht-word-card__height--small: 400px;
+$ht-word-card__inner-margin: 0;
+$ht-word-card__margin: 8px;
+
+$md-card-title__height: 72px;
+$md-card-title__padding: 16px;
+
+ht-word-card {
+  @include display-flex;
+  @include flex-direction(row);
+  height: $ht-word-card__height--small;
+  width: $ht-word-card__width--small;
+  position: relative;
+  margin: $ht-word-card__margin;
+
+  md-card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: inherit;
+    margin: $ht-word-card__inner-margin;
+
+    md-card-header {
+      height: $md-card-title__height;
+      padding: $md-card-title__padding;
+    }
+  }
+}

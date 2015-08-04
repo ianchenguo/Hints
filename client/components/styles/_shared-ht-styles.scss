@@ -1,0 +1,23 @@
+
+@import "compass/css3";
+
+//
+//$material-theme--background-color: #fafafa;
+//
+//.ht-content {
+//  background-color: $material-theme--background-color;
+//  .ht-content__intermediate-layer {
+//    background-color: inherit;
+//  }
+//}
+
+$small-screen: 600px;
+
+@mixin ht-flex($flex-direction:row, $flex-grow:1, $flex-shrink:1, $flex-basis: 0) {
+  @include display-flex;
+  @include flex-direction($flex-direction);
+  @include flex-grow($flex-grow);
+  @include flex-shrink($flex-shrink);
+  @include flex-basis($flex-basis);
+}
+

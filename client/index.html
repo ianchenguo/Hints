@@ -24,13 +24,13 @@
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
-  <body ng-app="hintsApp">
+  <body ng-app="hintsApp" layout="row">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ui-view=""></div>
+    <div ui-view="" layout="row" layout-fill></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -63,6 +63,10 @@
       <script src="bower_components/angular-animate/angular-animate.js"></script>
       <script src="bower_components/angular-aria/angular-aria.js"></script>
       <script src="bower_components/angular-material/angular-material.js"></script>
+      <script src="bower_components/angular-md5/angular-md5.js"></script>
+      <script src="bower_components/velocity/velocity.js"></script>
+      <script src="bower_components/velocity/velocity.ui.js"></script>
+      <script src="bower_components/immutable/dist/immutable.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
@@ -72,23 +76,61 @@
         <script src="app/app.js"></script>
 
     <!-- injector:js -->
-    <script src="app/account/account.js"></script>
+    <script src="app/account/account.module.js"></script>
+    <script src="app/core/auth/auth.module.js"></script>
+    <script src="app/core/core.module.js"></script>
+    <script src="app/core/layout/layout.module.js"></script>
+    <script src="app/core/model/firebase-model.module.js"></script>
+    <script src="components/components.module.js"></script>
+    <script src="components/ht-card/ht-card.module.js"></script>
+    <script src="components/ht-collapse-section/ht-collapse-section.module.js"></script>
     <script src="app/account/accountService/accountService.service.js"></script>
     <script src="app/account/login/login.controller.js"></script>
     <script src="app/account/login/login.js"></script>
+    <script src="app/account/profile/profile.controller.js"></script>
+    <script src="app/account/profile/profile.js"></script>
     <script src="app/account/sign-up/sign-up.controller.js"></script>
     <script src="app/account/sign-up/sign-up.js"></script>
-    <script src="app/core/auth/auth.js"></script>
+    <script src="app/base/base.controller.js"></script>
+    <script src="app/base/base.js"></script>
+    <script src="app/card-set/card-set-list/card-set-creation-dialog/card-set-creation-dialog.service.js"></script>
+    <script src="app/card-set/card-set-list/card-set-list.controller.js"></script>
+    <script src="app/card-set/card-set-list/card-set-list.js"></script>
+    <script src="app/card-set/card-set-list/ht-card-set-list-item/ht-card-set-list-item.directive.js"></script>
+    <script src="app/card-set/card-set.controller.js"></script>
+    <script src="app/card-set/card-set.js"></script>
+    <script src="app/card-sets/card-sets.controller.js"></script>
+    <script src="app/card-sets/card-sets.js"></script>
+    <script src="app/card-sets/ht-card-set-detail-modal/ht-card-set-detail-modal.directive.js"></script>
+    <script src="app/card-sets/ht-card-sets/ht-card-sets.directive.js"></script>
+    <script src="app/cards/cards-service/cards-service.service.js"></script>
+    <script src="app/cards/cards.controller.js"></script>
+    <script src="app/cards/cards.js"></script>
+    <script src="app/cards/new-cards/new-cards.controller.js"></script>
+    <script src="app/cards/new-cards/new-cards.js"></script>
     <script src="app/core/auth/auth.service.js"></script>
     <script src="app/core/auth/firebase-auth.service.js"></script>
-    <script src="app/core/core.js"></script>
-    <script src="app/core/model/firebase-model.js"></script>
+    <script src="app/core/immutable-helper/immutable-helper.service.js"></script>
+    <script src="app/core/layout/layout.service.js"></script>
+    <script src="app/core/model/Users/Users.service.js"></script>
+    <script src="app/core/model/card-set-tags/card-set-tags.service.js"></script>
+    <script src="app/core/model/card-sets/card-sets.service.js"></script>
     <script src="app/core/model/firebase-model.service.js"></script>
+    <script src="app/core/model/model-utils/model-utils.service.js"></script>
     <script src="app/home/home.controller.js"></script>
     <script src="app/home/home.js"></script>
     <script src="app/main/main.controller.js"></script>
     <script src="app/main/main.js"></script>
     <script src="components/ht-account-form/ht-account-form.directive.js"></script>
+    <script src="components/ht-card/ht-card-cover/ht-card-cover.directive.js"></script>
+    <script src="components/ht-card/ht-card-face/ht-card-face.directive.js"></script>
+    <script src="components/ht-card/ht-card/ht-card.directive.js"></script>
+    <script src="components/ht-collapse-section/ht-collapse-section.directive.js"></script>
+    <script src="components/ht-embedded-button/ht-embedded-button.directive.js"></script>
+    <script src="components/ht-list/ht-list.directive.js"></script>
+    <script src="components/ht-sidenav/ht-sidenav.directive.js"></script>
+    <script src="components/ht-toolbar/ht-toolbar.directive.js"></script>
+    <script src="components/ht-word-card/ht-word-card.directive.js"></script>
     <!-- endinjector -->
         <!-- endbuild -->
 </body>

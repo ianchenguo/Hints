@@ -5,6 +5,8 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import "../bower_components/susy/sass/susy";
 @import "../bower_components/breakpoint-sass/stylesheets/breakpoint";
 
+@import "../components/styles/shared-ht-styles";
+
 /**
  * App-wide Styles
  */
@@ -26,10 +28,31 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 // Component styles are injected through grunt
 // injector
 @import 'account/login/login.scss';
+@import 'account/profile/profile.scss';
 @import 'account/sign-up/sign-up.scss';
+@import 'base/base.scss';
+@import 'card-set/card-set-list/card-set-creation-dialog/dialog.scss';
+@import 'card-set/card-set-list/card-set-list.scss';
+@import 'card-set/card-set-list/ht-card-set-list-item/ht-card-set-list-item.scss';
+@import 'card-set/card-set.scss';
+@import 'card-sets/card-sets.scss';
+@import 'card-sets/ht-card-set-detail-modal/ht-card-set-detail-modal.scss';
+@import 'card-sets/ht-card-sets/ht-card-sets.scss';
+@import 'cards/cards.scss';
+@import 'cards/new-cards/new-cards.scss';
 @import 'home/home.scss';
 @import 'main/main.scss';
 @import 'ht-account-form/ht-account-form.scss';
+@import 'ht-card/ht-card-cover/ht-card-cover.scss';
+@import 'ht-card/ht-card-face/ht-card-face.scss';
+@import 'ht-card/ht-card/ht-card.scss';
+@import 'ht-collapse-section/ht-collapse-section.scss';
+@import 'ht-embedded-button/ht-embedded-button.scss';
+@import 'ht-list/ht-list.scss';
+@import 'ht-sidenav/ht-sidenav.scss';
+@import 'ht-toolbar/ht-toolbar.scss';
+@import 'ht-word-card/ht-word-card.scss';
+@import 'styles/_shared-ht-styles.scss';
 // endinjector
 
 // Configuring Susy Defaults
@@ -38,6 +61,11 @@ $susy: (
 );
 
 * {
+  //fix md-content in nested views
+  min-height: 0;
+  min-width: 0;
+  //overflow: hidden;
+
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -47,11 +75,20 @@ html,
 body {
   background-color: #fff;
   color: #555;
-  font-family: 'Lato', 'Arial', sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  text-rendering: optimizeLegibility;
+  //font-family: 'Lato', 'Arial', sans-serif;
+  //font-weight: 300;
+  //font-size: 20px;
+  //text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  height:100%;
+  width:100%;
 }
 
 $small-screen: 600px;
+
+//override md-content
+//md-content {
+//  margin-top: 0 !important;
+//  margin-bottom: 0 !important;
+//  transform: translate3d(0,0,0) !important;
+//}

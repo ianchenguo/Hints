@@ -10,12 +10,18 @@
     var requireNoAuth = function requireNoAuth() {
       return auth.requireAuth()
         .then(() => $state.go('home'))
-        .catch(reason => $q.reject(reason));
+        .catch(reason => reason);
+    };
+
+    var requireAuth = function requireNoAuth() {
+      return auth.requireAuth()
+        .catch(() => $state.go('login'));
     };
 
     // Public API here
     return {
-      requireNoAuth: requireNoAuth
+      requireNoAuth: requireNoAuth,
+      requireAuth: requireAuth
     }
   }
 }());

@@ -10,36 +10,57 @@
   //mock auth service
   var auth = {
     login: function () {
-      return null;
     },
     register: function () {
-      return null;
     },
     logout: function () {
-      return null;
     },
     requireAuth: function () {
-      return null;
     }
   };
 
   var $state = {
     go: function () {
-      return null;
     }
   };
 
   var accountService = {
     requireNoAuth: function () {
-      return null;
+    },
+    requireAuth: function () {
     }
+  };
+
+  var $firebaseObject = jasmine.createSpy('$firebaseObject').and.returnValue({});
+  var $firebaseArray = jasmine
+    .createSpy('$firebaseArray')
+    .and.returnValue({
+      $getRecord: function () {
+        return {};
+      }
+    });
+
+  var Users = {
+    getProfile: function (uid) {
+      return {
+        $loaded:function() {}
+      }
+    },
+    getDisplayName: function () {
+    },
+    getUser: function () {
+
+    },
+    users: {}
   };
 
   angular
     .module('hintsApp.mocks', [
       'hintsApp.mocks.auth',
       'hintsApp.mocks.state',
-      'hintsApp.mocks.account'
+      'hintsApp.mocks.account',
+      'hintsApp.mocks.firebase',
+      'hintsApp.mocks.model'
 
     ]);
 
@@ -54,6 +75,15 @@
   angular
     .module('hintsApp.mocks.account', [])
     .value('accountService', accountService);
+
+  angular
+    .module('hintsApp.mocks.firebase', [])
+    .value('$firebaseArray', $firebaseArray)
+    .value('$firebaseObject', $firebaseObject);
+
+  angular
+    .module('hintsApp.mocks.model', [])
+    .value('Users', Users);
 
 }());
 

@@ -1,0 +1,13 @@
+ht-list {
+  md-list {
+    md-list-item {
+      .md-button {
+        display: block;
+        padding: 0 16px 0 32px;
+        text-transform: none;
+        text-rendering: optimizeLegibility;
+        font-weight: 500;
+      }
+    }
+  }
+}

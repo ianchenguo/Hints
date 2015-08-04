@@ -1,0 +1,19 @@
+//
+//
+////hot fix angular material shrinkable toolbar
+//.ht-toolbar-outer-div {
+//  height: calc(100vh - 96px);
+//  //height: -o-calc(100vh - 48px); // opera
+//  //height: -webkit-calc(100vh - 48px); // chrome, safari
+//  //height: -moz-calc(100vh - 48px);// firefox
+//
+//  //position: absolute; top: 0px; bottom:0px; height:auto; width: 100%;
+//  overflow: hidden;
+//}
+//
+//.ht-content {
+//  height: 100%;
+//}
+
+@import "../../../components/styles/shared-ht-styles";
+

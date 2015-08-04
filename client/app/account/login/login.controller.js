@@ -14,7 +14,7 @@
     vm.login = function login(account) {
       return auth
         .login(account)
-        .then(value => $state.go('home'))
+        .then(value => $state.go('base.home'))
         .catch(reason => {
           vm.error = reason;
           return $q.reject(reason);

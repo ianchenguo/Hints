@@ -11,7 +11,8 @@ describe('Service: auth', function () {
     firebaseAuth = {
       $authWithPassword: () => null,
       $createUser: () => null,
-      $requireAuth: () => null
+      $requireAuth: () => null,
+      $getAuth: () => null
     };
     $provide.value('firebaseAuth', firebaseAuth);
   }));
@@ -33,6 +34,8 @@ describe('Service: auth', function () {
     spyOn(firebaseAuth, '$authWithPassword').and.returnValue(deferred.promise);
     spyOn(firebaseAuth, '$createUser').and.returnValue(deferred.promise);
     spyOn(firebaseAuth, '$requireAuth').and.returnValue(deferred.promise);
+    spyOn(firebaseAuth, '$getAuth').and.returnValue({});
+
   });
 
 
@@ -167,5 +170,16 @@ describe('Service: auth', function () {
       expect(handler).toHaveBeenCalledWith(error);
     });
   });
+
+  describe('logout', () => {
+
+    it('should call firebaseAuth', () => {
+      auth.logout();
+      expect(firebaseAuth.$unauth).toHaveBeenCalled();
+      expect(firebaseAuth.$unauth.calls.count()).toBe(1);
+    });
+  });
+
+
 
 });

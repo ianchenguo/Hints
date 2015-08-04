@@ -26,10 +26,20 @@
         .catch(reason => $q.reject(reason));
     };
 
+    var logout = function logout() {
+      return firebaseAuth.$unauth();
+    };
+
+    var getAuth = function getAuth() {
+      return firebaseAuth.$getAuth();
+    };
+
     return {
       login: login,
       register: register,
-      requireAuth: requireAuth
+      requireAuth: requireAuth,
+      logout: logout,
+      getAuth: getAuth
     };
   }
 }());

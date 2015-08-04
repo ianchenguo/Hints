@@ -1,0 +1,12 @@
+@import "compass/css3/flexbox";
+
+
+ht-sidenav {
+  @include display-flex;
+  @include flex-direction(row);
+
+  a.md-button {
+    margin: 0;
+    text-align: left;
+  }
+}

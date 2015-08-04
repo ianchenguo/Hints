@@ -1,0 +1,21 @@
+<md-toolbar class="md-whiteframe-z1">
+  <div class="md-toolbar-tools">
+    <!-- site title -->
+
+    <md-button class="md-icon-button"
+               aria-label="menu"
+               ng-click="vm.toggleLeftNav()"
+               hide-gt-md>
+      <md-icon md-font-library="material-icons">menu</md-icon>
+    </md-button>
+
+    <h2 hide-gt-md>
+      <span>{{vm.title}}</span>
+    </h2>
+
+    <!-- spacer -->
+    <span flex></span>
+
+    <icg-transclude></icg-transclude>
+  </div>
+</md-toolbar>

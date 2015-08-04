@@ -1,3 +1,21 @@
-<div class="col-md-12">
-This is the home view.
-</div>
+<ht-toolbar title="Home" class="md-whiteframe-z1">
+
+  <md-menu md-position-mode="target-right target">
+
+    <md-button class="md-icon-button" aria-label="more" ng-click="$mdOpenMenu()">
+      <md-icon md-font-library="material-icons">more_vert</md-icon>
+    </md-button>
+
+    <md-menu-content width="2">
+      <md-menu-item>
+        <md-button ng-click="vm.logout()">
+          Log out
+        </md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+
+</ht-toolbar>
+
+
+<div ui-view=""></div>

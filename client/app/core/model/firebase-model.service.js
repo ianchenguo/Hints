@@ -1,5 +1,5 @@
-//(function () {
-//  'use strict';
+(function () {
+  'use strict';
 
   angular.module('hintsApp.core.firebaseModel')
     .factory('firebaseModel', firebaseModel);
@@ -16,4 +16,4 @@
   }
 
 
-//}());
+}());

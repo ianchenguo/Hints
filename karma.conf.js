@@ -29,6 +29,7 @@ module.exports = function(config) {
       'client/bower_components/angular-ui-router/release/angular-ui-router.js',
       'client/app/app.js',
       'client/app/app.coffee',
+      'client/app/**/*module*.js',
       'client/app/**/*.js',
       'client/app/**/*.coffee',
       'client/components/**/*.js',
