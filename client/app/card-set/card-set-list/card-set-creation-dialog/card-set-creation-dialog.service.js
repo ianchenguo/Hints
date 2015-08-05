@@ -28,7 +28,7 @@
 
       let createCardSet = function(cardSet) {
 
-        return cardSetTags.add(cardSet.tags);
+        return cardSetTags.tagsExist(cardSet.tags);
       };
 
       vm.hide = function () {

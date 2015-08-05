@@ -4,12 +4,26 @@
   angular.module('hintsApp.core.firebaseModel')
     .factory('modelUtils', modelUtils);
 
-  modelUtils.$inject = ['$firebaseArray', '$firebaseObject', 'FirebaseUrl'];
-  function modelUtils($firebaseArray, $firebaseObject, FirebaseUrl) {
+
+  modelUtils.$inject = ['$q', '$firebaseArray', '$firebaseObject', 'FirebaseUrl'];
+  function modelUtils($q, $firebaseArray, $firebaseObject, FirebaseUrl) {
 
     let ref = function ref(root) {
       return new Firebase(FirebaseUrl + root);
     };
+
+    let refChild = R.curry(
+      (ref, child) => ref.child(child)
+    );
+
+    let setRef = R.curry(
+      (ref, obj) => ref.set(obj)
+    );
+
+    let updateRef = R.curry(
+      (ref, array) => ref.update(array)
+    );
+
 
     let branch = function branch(ref) {
       return $firebaseArray(ref);
@@ -29,12 +43,36 @@
       }
     );
 
+    let _exists = ref => ref.exists();
+
+
+    let exists = ref => {
+      let deferred = $q.defer();
+
+      let check = R.ifElse(
+        _exists,
+        () => deferred.resolve(true),
+        () => deferred.reject(false));
+
+      ref.once('value', snapshot => {
+        console.log('snapshot');
+        console.log(snapshot);
+        check(snapshot);
+      });
+
+      return deferred.promise;
+    };
+
     return {
       ref: ref,
+      refChild: refChild,
+      setRef: setRef,
+      updateRef: updateRef,
       branch: branch,
       branchNode: branchNode,
       node: node,
-      add:add
+      add: add,
+      exists: exists
     }
   }
 
