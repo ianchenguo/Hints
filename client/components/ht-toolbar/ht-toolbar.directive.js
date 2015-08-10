@@ -4,7 +4,7 @@
   angular.module('hintsApp')
     .directive('htToolbar', htToolbar);
 
-  htToolbar.$inject = ['layout']
+  htToolbar.$inject = ['layout'];
   function htToolbar(layout) {
     return {
       templateUrl: 'components/ht-toolbar/ht-toolbar.html',
@@ -23,9 +23,8 @@
       let vm = this;
 
       $rootScope.$on('$stateChangeSuccess',
-        (event, toState, toParams, fromState, fromParams) => {
-          layout.closeNav('left')();
-        });
+        (event, toState, toParams, fromState, fromParams) =>
+          layout.closeNav('left')());
 
       vm.toggleLeftNav = layout.buildToggler('left');
 

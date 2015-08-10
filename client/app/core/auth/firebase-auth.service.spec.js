@@ -12,13 +12,13 @@ describe('Service: firebaseAuth', function () {
     $provide.value('$firebaseAuth', $firebaseAuth);
   }));
 
-  //mock firebaseModel
-  var firebaseModel;
+  //mock firebaseRoot
+  var firebaseRoot;
   beforeEach(module(function ($provide) {
-    firebaseModel = {
+    firebaseRoot = {
       ref: {}
     };
-    $provide.value('firebaseModel', firebaseModel);
+    $provide.value('firebaseRoot', firebaseRoot);
   }));
 
   // instantiate service
@@ -28,7 +28,7 @@ describe('Service: firebaseAuth', function () {
   }));
 
   beforeEach(() => {
-    spyOn(firebaseModel, 'ref').and.returnValue({});
+    spyOn(firebaseRoot, 'ref').and.returnValue({});
   });
 
   it('should call $firebaseAuth', function () {
@@ -36,9 +36,9 @@ describe('Service: firebaseAuth', function () {
     expect($firebaseAuth.calls.count()).toBe(1);
   });
   //
-  //it('should call firebaseModel', function () {
-  //  expect(firebaseModel.ref).toHaveBeenCalled();
-  //  expect(firebaseModel.ref.calls.count()).toBe(1);
+  //it('should call firebaseRoot', function () {
+  //  expect(firebaseRoot.ref).toHaveBeenCalled();
+  //  expect(firebaseRoot.ref.calls.count()).toBe(1);
   //});
 
 

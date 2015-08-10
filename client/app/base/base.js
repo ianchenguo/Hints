@@ -5,9 +5,10 @@
     .config(function ($stateProvider) {
       $stateProvider
         .state('base', {
-          url: '/base',
+          abstract:true,
+          url: '/',
           templateUrl: 'app/base/base.html',
-          controller: 'BaseCtrl'
+          controller: 'BaseCtrl as vm'
         });
     });
 

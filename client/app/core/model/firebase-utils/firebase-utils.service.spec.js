@@ -1,18 +1,18 @@
 //'use strict';
 //
-//describe('Service: cardSets', function () {
+//describe('Service: modelUtils', function () {
 //
 //  // load the service's module
 //  beforeEach(module('hintsApp'));
 //
 //  // instantiate service
-//  var cardSets;
-//  beforeEach(inject(function (_cardSets_) {
-//    cardSets = _cardSets_;
+//  var modelUtils;
+//  beforeEach(inject(function (_modelUtils_) {
+//    modelUtils = _modelUtils_;
 //  }));
 //
 //  it('should do something', function () {
-//    expect(!!cardSets).toBe(true);
+//    expect(!!modelUtils).toBe(true);
 //  });
 //
 //});

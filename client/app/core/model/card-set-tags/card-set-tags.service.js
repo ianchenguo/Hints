@@ -1,148 +1,51 @@
 (function () {
   'use strict';
 
-  angular.module('hintsApp.core.firebaseModel')
+  angular.module('hintsApp.core.model')
     .factory('cardSetTags', cardSetTags);
 
-  cardSetTags.$inject = ['$q', 'R', 'I', 'immutableUtils', 'modelUtils', 'auth'];
-  function cardSetTags($q, R, I, immutableUtils, modelUtils, auth) {
+  cardSetTags.$inject = ['Rx', 'R', 'I', 'Promise', 'promiseUtils', 'coreUtils', 'immutableUtils', 'fbUtils'];
+  function cardSetTags(Rx, R, I, Promise, promiseUtils, coreUtils, immutableUtils, fbUtils) {
 
-    let log = R.curry((tag, value) => {
-      console.log(tag + ': ' + value);
-      return value;
-    });
+    let refString = childRefString => childRefString ? 'cardSetTags/' + childRefString : 'cardSetTags';
 
-    let cardSetTagRef = modelUtils.ref('cardSetTags');
-    console.log(cardSetTagRef.child('aa'));
+    let ref = fbUtils.ref(refString());
 
-    //let cardSetTagBranch = modelUtils.branch(cardSetTagRef);
-
-    let cardSetTagNode = modelUtils.branchNode(cardSetTagRef);
-
-    //let addCardSetTagNode = modelUtils.add(cardSetTagBranch);
-
-    //let cardSetTagQuery = moduelUtils.branch();
-
-
-    //refactor with Ramda
-    //tag :: tagString -> Map
-    let tagMap = tagString => {
-      let temp = {};
-      temp[tagString] = {
+    //createTagObj :: tagString -> tagObj
+    let tagObj = tagString => {
+      return {
+        name: tagString,
         dateOfCreation: Firebase.ServerValue.TIMESTAMP,
-        cardSets: []
-      };
-
-      console.log(temp);
-      return I.Map(temp);
+        cardSets: {}
+      }
     };
 
-    //tagList :: Array -> List
-    let tagList = R.compose(
-      I.List,
-      R.map(tagMap)
-    );
+    //findByName :: String tagName -> Promise $firebaseArray
+    let findByName = fbUtils.findByChildValue(ref, 'name');
 
-    let child = key => cardSetTagRef.child(key);
+    //create :: String tagName -> Promise tagRef
+    let create = R.compose(fbUtils.push(ref), tagObj);
 
-    //childExists :: Ref -> Promise
-    let childExists = R.compose(
-      modelUtils.exists,
-      log('child'),
-      child
-    );
+    //syncedTag :: String tagKey -> Promise $firebaseObject
+    let syncedTag = R.compose(fbUtils.syncObject, fbUtils.ref, refString);
 
-    //key :: Map -> keyString
-    let key = map => immutableUtils.keys(map).next().value;
+    //whenTagSyncedPartial
+    let whenTagSyncedPartial = R.compose(Rx.Observable.fromPromise, syncedTag);
 
+    //whenTagQueriedPartial :: String tagName -> Observable $firebaseArray
+    let whenTagQueriedPartial = R.compose(Rx.Observable.fromPromise, findByName);
 
-    //tagExists :: String -> Promise
-    let tagExists = R.compose(
-      childExists,
-      log('key'),
-      key
-    );
+    //whenTagQueriedPartial :: String tagName -> Observable tagRef
+    let whenTagCreatedPartial = R.compose(Rx.Observable.fromPromise, fbUtils.push(ref), tagObj);
 
-    let handlePromises = promises => {
-      promises.then(
-          value => console.log(value)
-      ).catch(
-          error => {
-          console.log(error);
-          return $q.reject(error);
-        }
-      )
-    };
-
-    //tagsExist :: (tagObj) -> (Promise)
-    let tagsExist = R.compose(
-      handlePromises,
-      $q.all,
-      log('promiseArray'),
-      immutableUtils.toArray,
-      log('promiseList'),
-      R.map(tagExists),
-      log('tagList'),
-      tagList,
-      log('input')
-    );
-
-
-    //let addCardSetTagNodes = function addCardSetTagNodes(tagArray) {
-    //
-
-    //
-    //  //Array -> OrderedSet
-    //  let createTagSet = R.compose(
-    //    I.OrderedSet,
-    //    R.map(tag => createCardSetTag({
-    //      name: tag,
-    //      owner: uid
-    //    }))
-    //  );
-    //
-    //
-    //  //Map -> Promise
-    //  let mapper = R.compose(addCardSetTagNode, immutableUtils.toObject);
-    //
-    //  //OrderedSet -> Iterable
-    //  //let addTags = R.map(
-    //  //  R.compose(addCardSetTagNode, immutableUtils.toObject)
-    //  //);
-    //
-    //  //refactor this function with ramda
-    //  let handelPromises = promise =>
-    //    promise
-    //      .then(value => {
-    //        let pairArray = R.map(e => {
-    //          let pair = {};
-    //          pair[e.key()] = true;
-    //          return pair;
-    //        }, value);
-    //
-    //        return pairArray;
-    //      })
-    //      .catch(error => $q.reject(error));
-    //
-    //
-    //  //Array -> Promise
-    //  let done = R.compose(
-    //    log,
-    //    handelPromises,
-    //    $q.all,
-    //    immutableUtils.toArray,
-    //    addTags,
-    //    createTagSet);
-    //
-    //  return done(tagArray);
-    //};
 
     return {
-      //create: createCardSetTag,
-      //all: cardSetTagBranch,
-      get: cardSetTagNode,
-      //add: addCardSetTagNodes,
-      tagsExist: tagsExist
+      create: create,
+      findByName: findByName,
+      syncedTag: syncedTag,
+      whenTagQueriedPartial: whenTagQueriedPartial,
+      whenTagCreatedPartial: whenTagCreatedPartial,
+      whenTagSyncedPartial: whenTagSyncedPartial
     }
   }
 

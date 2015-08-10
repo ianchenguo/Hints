@@ -27,6 +27,7 @@ module.exports = function(config) {
       'client/bower_components/angular-sanitize/angular-sanitize.js',
       'client/bower_components/angular-route/angular-route.js',
       'client/bower_components/angular-ui-router/release/angular-ui-router.js',
+      'client/bower_components/immutable/dist/immutable.js',
       'client/app/app.js',
       'client/app/app.coffee',
       'client/app/**/*module*.js',
@@ -45,6 +46,7 @@ module.exports = function(config) {
       '**/*.jade': 'ng-jade2js',
       '**/*.html': 'html2js',
       'client/app/**/*.js': 'babel',
+      'client/components/**/*.js': 'babel',
       '**/*.coffee': 'coffee',
     },
 
@@ -93,7 +95,7 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode

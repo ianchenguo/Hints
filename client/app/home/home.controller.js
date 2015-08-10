@@ -10,7 +10,7 @@
 
     let logout = function logout() {
       auth.logout();
-      return $state.go('main');
+      return $state.go('base.main');
     };
 
     vm.logout = logout;

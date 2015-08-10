@@ -3,7 +3,7 @@
 describe('Service: cardSetTags', function () {
 
   // load the service's module
-  beforeEach(module('hintsApp'));
+  beforeEach(module('hintsApp.core'));
 
   // instantiate service
   var cardSetTags;
@@ -11,8 +11,18 @@ describe('Service: cardSetTags', function () {
     cardSetTags = _cardSetTags_;
   }));
 
-  it('should do something', function () {
-    expect(!!cardSetTags).toBe(true);
+  describe('interface', () => {
+    it('should expose createTags()', () => {
+      expect(cardSetTags.createTags()).toBeDefined();
+    });
+  });
+
+  describe('createTags()', () => {
+
   });
 
 });
+
+
+
+

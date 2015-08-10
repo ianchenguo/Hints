@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  angular.module('hintsApp.components.htCard')
+  angular.module('hintsApp.components')
     .directive('htWordCard', function () {
       return {
         templateUrl: 'components/ht-word-card/ht-word-card.html',

@@ -1,137 +1,145 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <base href="/">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(client) app/vendor.css -->
-      <!-- bower:css -->
-      <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
-      <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css({.tmp,client}) app/app.css -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="app/app.css">
-      <!-- injector:css -->
-      <!-- endinjector -->
-    <!-- endbuild -->
-  </head>
-  <body ng-app="hintsApp" layout="row">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <base href="/">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(client) app/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css({.tmp,client}) app/app.css -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="app/app.css">
+  <!-- injector:css -->
+  <!-- endinjector -->
+  <!-- endbuild -->
+</head>
+<body ng-app="hintsApp" layout="row">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div ui-view="" layout="row" layout-fill></div>
+<!-- Add your site or application content here -->
+<div ui-view="" layout="row" layout-fill></div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-      ga('create', 'UA-XXXXX-X');
-      ga('send', 'pageview');
-    </script>
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
+</script>
 
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
-    <!-- build:js({client,node_modules}) app/vendor.js -->
-      <!-- bower:js -->
-      <script src="bower_components/jquery/dist/jquery.js"></script>
-      <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-resource/angular-resource.js"></script>
-      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-      <script src="bower_components/ramda/dist/ramda.js"></script>
-      <script src="bower_components/firebase/firebase.js"></script>
-      <script src="bower_components/angularfire/dist/angularfire.js"></script>
-      <script src="bower_components/angular-messages/angular-messages.js"></script>
-      <script src="bower_components/angular-animate/angular-animate.js"></script>
-      <script src="bower_components/angular-aria/angular-aria.js"></script>
-      <script src="bower_components/angular-material/angular-material.js"></script>
-      <script src="bower_components/angular-md5/angular-md5.js"></script>
-      <script src="bower_components/velocity/velocity.js"></script>
-      <script src="bower_components/velocity/velocity.ui.js"></script>
-      <script src="bower_components/immutable/dist/immutable.js"></script>
-      <!-- endbower -->
-    <!-- endbuild -->
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+<!-- build:js({client,node_modules}) app/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/lodash/dist/lodash.compat.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/ramda/dist/ramda.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
+<script src="bower_components/angularfire/dist/angularfire.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-md5/angular-md5.js"></script>
+<script src="bower_components/velocity/velocity.js"></script>
+<script src="bower_components/velocity/velocity.ui.js"></script>
+<script src="bower_components/immutable/dist/immutable.js"></script>
+<script src="bower_components/bluebird/js/browser/bluebird.js"></script>
+<script src="bower_components/rxjs/dist/rx.all.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
 
 
-        <!-- build:js(.tmp) app/app.js -->
+<!-- build:js(.tmp) app/app.js -->
+<script src="app/app.js"></script>
 
-        <script src="app/app.js"></script>
 
-    <!-- injector:js -->
-    <script src="app/account/account.module.js"></script>
-    <script src="app/core/auth/auth.module.js"></script>
-    <script src="app/core/core.module.js"></script>
-    <script src="app/core/layout/layout.module.js"></script>
-    <script src="app/core/model/firebase-model.module.js"></script>
-    <script src="components/components.module.js"></script>
-    <script src="components/ht-card/ht-card.module.js"></script>
-    <script src="components/ht-collapse-section/ht-collapse-section.module.js"></script>
-    <script src="app/account/accountService/accountService.service.js"></script>
-    <script src="app/account/login/login.controller.js"></script>
-    <script src="app/account/login/login.js"></script>
-    <script src="app/account/profile/profile.controller.js"></script>
-    <script src="app/account/profile/profile.js"></script>
-    <script src="app/account/sign-up/sign-up.controller.js"></script>
-    <script src="app/account/sign-up/sign-up.js"></script>
-    <script src="app/base/base.controller.js"></script>
-    <script src="app/base/base.js"></script>
-    <script src="app/card-set/card-set-list/card-set-creation-dialog/card-set-creation-dialog.service.js"></script>
-    <script src="app/card-set/card-set-list/card-set-list.controller.js"></script>
-    <script src="app/card-set/card-set-list/card-set-list.js"></script>
-    <script src="app/card-set/card-set-list/ht-card-set-list-item/ht-card-set-list-item.directive.js"></script>
-    <script src="app/card-set/card-set.controller.js"></script>
-    <script src="app/card-set/card-set.js"></script>
-    <script src="app/card-sets/card-sets.controller.js"></script>
-    <script src="app/card-sets/card-sets.js"></script>
-    <script src="app/card-sets/ht-card-set-detail-modal/ht-card-set-detail-modal.directive.js"></script>
-    <script src="app/card-sets/ht-card-sets/ht-card-sets.directive.js"></script>
-    <script src="app/cards/cards-service/cards-service.service.js"></script>
-    <script src="app/cards/cards.controller.js"></script>
-    <script src="app/cards/cards.js"></script>
-    <script src="app/cards/new-cards/new-cards.controller.js"></script>
-    <script src="app/cards/new-cards/new-cards.js"></script>
-    <script src="app/core/auth/auth.service.js"></script>
-    <script src="app/core/auth/firebase-auth.service.js"></script>
-    <script src="app/core/immutable-utils/immutable-utils.service.js"></script>
-    <script src="app/core/layout/layout.service.js"></script>
-    <script src="app/core/model/Users/Users.service.js"></script>
-    <script src="app/core/model/card-set-tags/card-set-tags.service.js"></script>
-    <script src="app/core/model/card-sets/card-sets.service.js"></script>
-    <script src="app/core/model/firebase-model.service.js"></script>
-    <script src="app/core/model/model-utils/model-utils.service.js"></script>
-    <script src="app/home/home.controller.js"></script>
-    <script src="app/home/home.js"></script>
-    <script src="app/main/main.controller.js"></script>
-    <script src="app/main/main.js"></script>
-    <script src="components/ht-account-form/ht-account-form.directive.js"></script>
-    <script src="components/ht-card/ht-card-cover/ht-card-cover.directive.js"></script>
-    <script src="components/ht-card/ht-card-face/ht-card-face.directive.js"></script>
-    <script src="components/ht-card/ht-card/ht-card.directive.js"></script>
-    <script src="components/ht-collapse-section/ht-collapse-section.directive.js"></script>
-    <script src="components/ht-embedded-button/ht-embedded-button.directive.js"></script>
-    <script src="components/ht-list/ht-list.directive.js"></script>
-    <script src="components/ht-sidenav/ht-sidenav.directive.js"></script>
-    <script src="components/ht-toolbar/ht-toolbar.directive.js"></script>
-    <script src="components/ht-word-card/ht-word-card.directive.js"></script>
-    <!-- endinjector -->
-        <!-- endbuild -->
+<!-- injector:js -->
+<script src="app/account/account.module.js"></script>
+<script src="app/core/auth/auth.module.js"></script>
+<script src="app/core/core.module.js"></script>
+<script src="app/core/layout/layout.module.js"></script>
+<script src="app/core/model/model.module.js"></script>
+<script src="components/components.module.js"></script>
+<script src="components/ht-collapse-section/ht-collapse-section.module.js"></script>
+<script src="app/account/accountService/accountService.service.js"></script>
+<script src="app/account/login/login.controller.js"></script>
+<script src="app/account/login/login.js"></script>
+<script src="app/account/profile/profile.controller.js"></script>
+<script src="app/account/profile/profile.js"></script>
+<script src="app/account/sign-up/sign-up.controller.js"></script>
+<script src="app/account/sign-up/sign-up.js"></script>
+<script src="app/base/base.controller.js"></script>
+<script src="app/base/base.js"></script>
+<script src="app/card-set/card-set-list/card-set-creation-dialog/card-set-creation-dialog.service.js"></script>
+<script src="app/card-set/card-set-list/card-set-list.controller.js"></script>
+<script src="app/card-set/card-set-list/card-set-list.js"></script>
+<script src="app/card-set/card-set-list/ht-card-set-list-item/ht-card-set-list-item.directive.js"></script>
+<script src="app/card-set/card-set.controller.js"></script>
+<script src="app/card-set/card-set.js"></script>
+<script src="app/card-set/cards/cards-service/cards-service.service.js"></script>
+<script src="app/card-set/cards/cards.controller.js"></script>
+<script src="app/card-set/cards/cards.js"></script>
+<script src="app/card-set/cards/new-cards/new-cards.controller.js"></script>
+<script src="app/card-set/cards/new-cards/new-cards.js"></script>
+<script src="app/core/auth/auth.service.js"></script>
+<script src="app/core/auth/firebase-auth.service.js"></script>
+<script src="app/core/layout/layout.service.js"></script>
+<script src="app/core/model/Users/Users.service.js"></script>
+<script src="app/core/model/card-set-tags/card-set-tags.service.js"></script>
+<script src="app/core/model/card-sets/card-sets.service.js"></script>
+<script src="app/core/model/firebase-root/firebase-root.service.js"></script>
+<script src="app/core/model/firebase-utils/firebase-utils.service.js"></script>
+<script src="app/core/utils/core-utils/core-utils.service.js"></script>
+<script src="app/core/utils/immutable-utils/immutable-utils.service.js"></script>
+<script src="app/core/utils/promise-utils/promise-utils.service.js"></script>
+<script src="app/home/home.controller.js"></script>
+<script src="app/home/home.js"></script>
+<script src="app/main/main.controller.js"></script>
+<script src="app/main/main.js"></script>
+<script src="components/ht-account-form/ht-account-form.directive.js"></script>
+<script src="components/ht-collapse-section/ht-collapse-section.directive.js"></script>
+<script src="components/ht-embedded-button/ht-embedded-button.directive.js"></script>
+<script src="components/ht-list/ht-list.directive.js"></script>
+<script src="components/ht-sidenav/ht-sidenav.directive.js"></script>
+<script src="components/ht-toolbar/ht-toolbar.directive.js"></script>
+<script src="components/ht-word-card/ht-word-card.directive.js"></script>
+<!-- endinjector -->
+<!-- endbuild -->
 </body>
 </html>

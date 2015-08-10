@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('hintsApp.core.firebaseModel')
+  angular.module('hintsApp.core.model')
     .factory('Users', Users);
 
   Users.$inject = ['$firebaseArray', '$firebaseObject', 'FirebaseUrl'];

@@ -7,6 +7,6 @@
 (function () {
 
 //code here
-  angular.module('hintsApp.core.auth', ['hintsApp.core.firebaseModel']);
+  angular.module('hintsApp.core.auth', ['hintsApp.core.model']);
 
 }());

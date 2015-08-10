@@ -7,7 +7,7 @@
 (function () {
 
 //code here
-  angular.module('hintsApp.core.firebaseModel', [])
+  angular.module('hintsApp.core.model', [])
     .constant('FirebaseUrl','https://ianchenguo-hints.firebaseio.com/');
 
 }());

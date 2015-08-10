@@ -8,9 +8,6 @@
 
 //code here
   angular
-    .module('hintsApp.components',[
-      'hintsApp.components.htCard',
-      'hintsApp.components.collapseSection'
-    ]);
+    .module('hintsApp.components',[]);
 
 }());

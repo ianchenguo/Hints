@@ -9,7 +9,7 @@
 
     var requireNoAuth = function requireNoAuth() {
       return auth.requireAuth()
-        .then(() => $state.go('home'))
+        .then(() => $state.go('base.home'))
         .catch(reason => reason);
     };
 

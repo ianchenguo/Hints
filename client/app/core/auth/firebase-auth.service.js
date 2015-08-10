@@ -4,11 +4,11 @@
   angular.module('hintsApp.core.auth')
     .factory('firebaseAuth', firebaseAuth);
 
-  firebaseAuth.$inject = ['$firebaseAuth', 'firebaseModel'];
+  firebaseAuth.$inject = ['$firebaseAuth', 'firebaseRoot'];
 
-  function firebaseAuth($firebaseAuth, firebaseModel) {
+  function firebaseAuth($firebaseAuth, firebaseRoot) {
 
-    return $firebaseAuth(firebaseModel.ref);
+    return $firebaseAuth(firebaseRoot.ref);
 
   }
 }());

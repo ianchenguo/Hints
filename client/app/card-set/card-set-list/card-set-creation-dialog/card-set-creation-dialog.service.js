@@ -4,8 +4,8 @@
   angular.module('hintsApp')
     .factory('cardSetCreationDialog', cardSetCreationDialog);
 
-  cardSetCreationDialog.$inject = ['$mdDialog','cardSetTags'];
-  function cardSetCreationDialog($mdDialog,cardSetTags) {
+  cardSetCreationDialog.$inject = ['$mdDialog','cardSets'];
+  function cardSetCreationDialog($mdDialog,cardSets) {
 
     let showDialog = function (ev) {
       $mdDialog.show({
@@ -28,7 +28,7 @@
 
       let createCardSet = function(cardSet) {
 
-        return cardSetTags.tagsExist(cardSet.tags);
+        return cardSets.createCardSet(cardSet);
       };
 
       vm.hide = function () {
