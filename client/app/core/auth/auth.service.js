@@ -4,33 +4,27 @@
   angular.module('hintsApp.core.auth')
     .factory('auth', auth);
 
-  auth.$inject = ['$q', 'firebaseAuth'];
+  auth.$inject = ['firebaseAuth'];
 
-  function auth($q, firebaseAuth) {
+  function auth(firebaseAuth) {
 
     var login = function login(account) {
-      return firebaseAuth.$authWithPassword(account)
-        .then(value => value)
-        .catch(reason => $q.reject(reason));
+      return firebaseAuth.$authWithPassword(account);
     };
 
     var register = function register(account) {
-      return firebaseAuth.$createUser(account)
-        .then(value => value)
-        .catch(reason => $q.reject(reason));
+      return firebaseAuth.$createUser(account);
     };
 
     var requireAuth = function requireAuth() {
-      return firebaseAuth.$requireAuth()
-        .then(value => value)
-        .catch(reason => $q.reject(reason));
+      return firebaseAuth.$requireAuth();
     };
 
     var logout = function logout() {
       return firebaseAuth.$unauth();
     };
 
-    var getAuth = function getAuth() {
+    var auth = function getAuth() {
       return firebaseAuth.$getAuth();
     };
 
@@ -39,7 +33,7 @@
       register: register,
       requireAuth: requireAuth,
       logout: logout,
-      getAuth: getAuth
+      auth: auth
     };
   }
 }());

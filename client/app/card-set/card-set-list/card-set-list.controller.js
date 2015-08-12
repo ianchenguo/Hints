@@ -4,10 +4,13 @@
   angular.module('hintsApp')
     .controller('CardSetListCtrl', CardSetListCtrl);
 
-  CardSetListCtrl.$inject = ['cardSetCreationDialog'];
-  function CardSetListCtrl(cardSetCreationDialog) {
+  CardSetListCtrl.$inject = ['cardSetCreationDialog', 'myCardSets', 'coreUtils', 'uiUtils', 'cardSetListService'];
+  function CardSetListCtrl(cardSetCreationDialog, myCardSets, coreUtils, uiUtils, cardSetListService) {
     let vm = this;
 
+
     vm.createCardSet = cardSetCreationDialog.showDialog;
+    vm.localCardSets = myCardSets;
+
   }
 }());

@@ -20,31 +20,51 @@
       }
     };
 
+    //findById :: String id -> Promise $firebaseObject
+    let findById = R.compose(fbUtils.syncObject,refString);
+
+    //whenTagFoundByIdFrom :: String id -> Observable $firebaseObject
+    let whenTagFoundByIdFrom = R.compose(Rx.Observable.fromPromise,findById);
+
     //findByName :: String tagName -> Promise $firebaseArray
-    let findByName = fbUtils.findByChildValue(ref, 'name');
+    let findByName = fbUtils.findByChild(ref, 'name');
+
+    //whenTagQueriedByNamePartial :: String tagName -> Observable $firebaseArray
+    let whenTagQueriedByNamePartial = R.compose(Rx.Observable.fromPromise, findByName);
+
+    //findByCardSet :: String cardSetId -> Promise $firebaseArray
+    let findByCardSet = fbUtils.findByChild(ref, 'cardSets');
+
+    //whenTagQueriedByCardSetPartial :: String cardSetId -> Observable $firebaseArray
+    let whenTagQueriedByCardSetPartial = R.compose(Rx.Observable.fromPromise, findByCardSet);
 
     //create :: String tagName -> Promise tagRef
     let create = R.compose(fbUtils.push(ref), tagObj);
 
+    //whenTagCreatedPartial :: String tagName -> Observable tagRef
+    let whenTagCreatedPartial = R.compose(Rx.Observable.fromPromise, fbUtils.push(ref), tagObj);
+
     //syncedTag :: String tagKey -> Promise $firebaseObject
     let syncedTag = R.compose(fbUtils.syncObject, fbUtils.ref, refString);
 
-    //whenTagSyncedPartial
+    //whenTagSyncedPartial :: String tagKey -> Observable $firebaseObject
     let whenTagSyncedPartial = R.compose(Rx.Observable.fromPromise, syncedTag);
-
-    //whenTagQueriedPartial :: String tagName -> Observable $firebaseArray
-    let whenTagQueriedPartial = R.compose(Rx.Observable.fromPromise, findByName);
-
-    //whenTagQueriedPartial :: String tagName -> Observable tagRef
-    let whenTagCreatedPartial = R.compose(Rx.Observable.fromPromise, fbUtils.push(ref), tagObj);
 
 
     return {
       create: create,
-      findByName: findByName,
-      syncedTag: syncedTag,
-      whenTagQueriedPartial: whenTagQueriedPartial,
       whenTagCreatedPartial: whenTagCreatedPartial,
+
+      findById: findById,
+      whenTagFoundByIdFrom: whenTagFoundByIdFrom,
+
+      findByName: findByName,
+      whenTagQueriedByCardSetPartial: whenTagQueriedByCardSetPartial,
+
+      findByCardSet: findByCardSet,
+      whenTagQueriedByNamePartial: whenTagQueriedByNamePartial,
+
+      syncedTag: syncedTag,
       whenTagSyncedPartial: whenTagSyncedPartial
     }
   }

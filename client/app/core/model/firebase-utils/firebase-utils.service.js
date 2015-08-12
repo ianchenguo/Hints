@@ -14,8 +14,14 @@
     //key :: Firebase ref -> String key
     let key = ref => ref.key();
 
-    //findByChildValue :: Firebase parentRef -> String child -> String value -> Promise $firebaseArrayy
-    let findByChildValue = R.curry((parentRef, child, value) =>
+
+
+    //findByChild :: Firebase parentRef -> String child -> String value -> Promise $firebaseArrayy
+    let findByChild = R.curry((parentRef, child, key) =>
+      $firebaseArray(parentRef.orderByChild(child).equalTo(key)).$loaded());
+
+    //findByValue :: Firebase parentRef -> String child -> String value -> Promise $firebaseArrayy
+    let findByValue = R.curry((parentRef, child, value) =>
       $firebaseArray(parentRef.orderByChild(child).equalTo(value)).$loaded());
 
     //push :: Firebase parentRef -> childObj -> Promise childRef
@@ -33,7 +39,7 @@
     return {
       ref: ref,
       key: key,
-      findByChildValue: findByChildValue,
+      findByChild: findByChild,
       push: push,
       syncObject: syncObject,
       updateObject: updateObject,

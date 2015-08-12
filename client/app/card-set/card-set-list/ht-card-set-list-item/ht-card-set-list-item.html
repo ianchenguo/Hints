@@ -1,18 +1,27 @@
 <md-list-item class="md-3-line"
-              ng-click="goToPerson(person.name, $event)">
+              ng-click="vm.toggleDetailsMenu()">
 
-  <div class="md-avatar"></div>
+  <div class="md-avatar" ng-style="{'background': vm.themeColor}"></div>
 
   <div class="md-list-item-text">
-    <h3>Dummy card set</h3>
-    <h4>IELTS; Wordlist 1</h4>
+    <h3 class="ht-card-set-list-item__title">
+      {{vm.cardSetItem.title}}
+    </h3>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <h4 class="ht-card-set-list-item__sub-title">
+      <span ng-repeat="tag in vm.cardSetItem.tags | cardSetTagNames">
+        {{tag}}
+      </span>
+    </h4>
+
+    <p class="ht-card-set-list-item__text">
+      {{vm.cardSetItem.desc}}
+    </p>
   </div>
 
-  <md-icon md-svg-icon="communication:messenger"
-           ng-click="doSecondaryAction($event)"
-           aria-label="Open Chat"
-           class="md-secondary md-hue-3"
-           ng-class="{'md-primary': person.newMessage}"></md-icon>
+  <!--<md-icon md-svg-icon="communication:messenger"-->
+  <!--ng-click="doSecondaryAction($event)"-->
+  <!--aria-label="Open Chat"-->
+  <!--class="md-secondary md-hue-3"-->
+  <!--ng-class="{'md-primary': person.newMessage}"></md-icon>-->
 </md-list-item>

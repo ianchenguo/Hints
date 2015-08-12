@@ -1,23 +1,42 @@
-<ht-toolbar title="My Cards">
+<md-toolbar class="md-tall md-warn md-hue-3 md-whiteframe-z1">
 
-  <md-menu md-position-mode="target-right target">
+  <div class="md-toolbar-tools md-toolbar-tools-bottom">
 
-    <md-button class="md-icon-button" aria-label="more" ng-click="$mdOpenMenu()">
-      <md-icon md-font-library="material-icons">more_vert</md-icon>
+
+    <md-button class="md-icon-button"
+               aria-label="menu"
+               ng-click="vm.toggleLeftNav()"
+               hide-gt-md>
+      <md-icon md-font-library="material-icons">menu</md-icon>
     </md-button>
-
-    <md-menu-content width="2">
-      <md-menu-item>
-        <md-button ng-click="vm.logout()">
-          Log out
-        </md-button>
-      </md-menu-item>
-    </md-menu-content>
-  </md-menu>
-</ht-toolbar>
+  </div>
 
 
-  <div layout="column" ui-view=""></div>
+  <span flex></span>
+
+  <div class="md-toolbar-tools md-toolbar-tools-bottom">
+    <h2 hide-gt-md>
+      <span>Cards</span>
+    </h2>
+    <md-menu md-position-mode="target-right target">
+
+      <md-button class="md-icon-button" aria-label="more" ng-click="$mdOpenMenu()">
+        <md-icon md-font-library="material-icons">more_vert</md-icon>
+      </md-button>
+
+      <md-menu-content width="2">
+        <md-menu-item>
+          <md-button ng-click="vm.logout()">
+            Log out
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+
+  </div>
+
+</md-toolbar>
 
 
+<div flex layout="column" ui-view=""></div>
 

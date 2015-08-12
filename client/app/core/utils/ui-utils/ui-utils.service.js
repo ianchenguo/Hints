@@ -1,7 +1,11 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular.module('hintsApp')
-  .factory('cardsService', ['$mdUtil', '$mdSidenav', function ($mdUtil, $mdSidenav) {
+  angular.module('hintsApp.core')
+    .factory('uiUtils', uiUtils);
+
+  function uiUtils() {
+
 
     //adapted from angular-material offical site
     //http://codepen.io/pen?editors=101
@@ -58,24 +62,9 @@ angular.module('hintsApp')
       return COLORS[Math.floor(Math.random() * COLORS.length)];
     };
 
-
-    /**
-     * Build handler to open/close a SideNav
-     *
-     * Adapted from angular material demo
-     */
-
-    let buildToggler = function buildToggler(navID) {
-      let debounceFn = $mdUtil.debounce(function () {
-        $mdSidenav(navID)
-          .toggle()
-      }, 200);
-      return debounceFn;
-    };
-
     // Public API here
     return {
-      randomColor: randomColor,
-      buildToggler: buildToggler
+      randomColor: randomColor
     };
-  }]);
+  }
+}());

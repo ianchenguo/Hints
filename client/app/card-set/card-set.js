@@ -5,7 +5,7 @@
     .config(function ($stateProvider) {
       $stateProvider
         .state('base.cardSet', {
-          url: '/card-set',
+          url: '^/card-set',
           abstract:true,
           templateUrl: 'app/card-set/card-set.html',
           controller: 'CardSetCtrl as vm',

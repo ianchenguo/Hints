@@ -9,9 +9,7 @@
 
     let ref = fbUtils.ref('cardSets');
 
-    // params -> queryTags -> createNewTags -> createCardSetObj -> pushCardSet -> updateRelatedTags
-
-    // cardSetObj :: Object params -> Object cardSetObj
+    //cardSetObj :: Object params -> Object cardSetObj
     let cardSetObj = params => {
       return {
         title: params.title,
@@ -23,19 +21,23 @@
       }
     };
 
-    // tagStrings :: Object cardSetParams -> [tagString]
+    //tagStrings :: Object cardSetParams -> [tagString]
     let whenTagStringsProvidedPartial = R.compose(Rx.Observable.from, R.prop('tags'));
 
-    // findByName :: String tagString -> Promise $firebaseArray
-    let findByName = fbUtils.findByChildValue(ref, 'name');
+    //findByName :: String tagString -> Promise $firebaseArray
+    let findByName = fbUtils.findByChild(ref, 'name');
 
-    let create = cardSetParams => {
+    //findByOwner :: String uid -> Promise $firebaseArray
+    let findByOwner = fbUtils.findByChild(ref, 'owner');
+
+    //whenCreated :: Object cardSetParams -> Observable
+    let whenCreatedFrom = cardSetParams => {
 
       let whenTagStringsProvided = whenTagStringsProvidedPartial(cardSetParams);
 
       let whenTagsQueried =
         whenTagStringsProvided.zip(
-          whenTagStringsProvided.concatMap(cardSetTags.whenTagQueriedPartial),
+          whenTagStringsProvided.concatMap(cardSetTags.whenTagQueriedByNamePartial),
           (tagString, resultArray) => R.createMapEntry(tagString, resultArray)
         );
 
@@ -55,7 +57,9 @@
           R.compose(R.createMapEntry(R.__, true), R.prop('$id')),
           //or get its key, and create [key, true]
           R.compose(R.createMapEntry(R.__, true), fbUtils.key)
-        ));
+        ))
+        .zip(whenTagStringsProvided,
+        (tagTuple, tagString) => R.createMapEntry(R.keys(tagTuple), tagString));
 
       let whenCardSetCreated = R.compose(Rx.Observable.fromPromise, fbUtils.push(ref), cardSetObj)(cardSetParams);
 
@@ -82,32 +86,12 @@
         })
         .flatMap(fbUtils.whenObjectUpdatedPartial);
 
-      let whenDone = whenCardSetUpdated.concat(whenTagsUpdated);
-
-
-      let subscription = whenDone.subscribe(
-          value => {
-          console.log('sub');
-          console.log(value)
-        },
-          error => console.log(error),
-        () => console.log('completed')
-      );
+      return whenCardSetUpdated.concat(whenTagsUpdated);
     };
 
-
-    create({
-      title: 'dummy title',
-      desc: 'dummy desc',
-      owner: 'dummy onwer',
-      tags: ['123', '993', 'sadf'],
-      shared: true,
-      dateOfCreation: Firebase.ServerValue.TIMESTAMP
-    });
-    //create({tags:[]});
-
     return {
-      create: create
+      whenCreatedFrom: whenCreatedFrom,
+      findByOwner: findByOwner
     }
   }
 

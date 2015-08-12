@@ -1,0 +1,13 @@
+<md-subheader>Card Sets</md-subheader>
+
+<md-list flex layout="column">
+  <md-virtual-repeat-container flex layout="column">
+
+    <ht-card-set-list-item md-virtual-repeat="item in vm.cardSets"
+                           card-set-item="item"
+                           id="ht-card-set-list-item__{{$index == vm.localCardSets.length -1 ? 'last': $index}}">
+    </ht-card-set-list-item>
+
+  </md-virtual-repeat-container>
+</md-list>
+

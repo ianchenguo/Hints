@@ -18,7 +18,6 @@
       'ngMessages',
       'ui.router',
       'firebase',
-
       'hintsApp.core.model',
       'hintsApp.core.auth',
       'hintsApp.core.layout'

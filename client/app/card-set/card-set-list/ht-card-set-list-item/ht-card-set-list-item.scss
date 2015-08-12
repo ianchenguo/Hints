@@ -1,11 +1,26 @@
 @import "compass/css3/flexbox";
 
+$ht-card-set-list-item--3-line-height: 88px;
+
+@mixin ht-card-set-list-item__text-wrapper() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
 ht-card-set-list-item {
+
   @include display-flex;
   @include flex-direction(column);
 
-  div.md-avatar {
-    background: green;
+  height: $ht-card-set-list-item--3-line-height;
+  overflow: hidden;
+
+  .ht-card-set-list-item__title,
+  .ht-card-set-list-item__sub-title,
+  .ht-card-set-list-item__text {
+    @include ht-card-set-list-item__text-wrapper();
   }
 
 }

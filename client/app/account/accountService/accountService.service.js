@@ -4,8 +4,8 @@
   angular.module('hintsApp.account')
     .factory('accountService', accountService);
 
-  accountService.$inject = ['$q', '$state', 'auth'];
-  function accountService($q, $state, auth) {
+  accountService.$inject = ['$state', 'auth'];
+  function accountService($state, auth) {
 
     var requireNoAuth = function requireNoAuth() {
       return auth.requireAuth()

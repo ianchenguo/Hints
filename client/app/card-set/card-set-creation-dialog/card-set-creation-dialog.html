@@ -42,6 +42,14 @@
         </div>
       </md-input-container>
 
+      <md-input-container>
+        <label>Share</label>
+        <md-switch ng-model="vm.cardSet.shared" ng-true-value="true" ng-false-value="false" aria-label="Share this card set?">
+          Share this card set? {{vm.cardSet.shared}}
+        </md-switch>
+      </md-input-container>
+
+
       <!--<md-chips ng-model="vm.cardSet.tags" md-autocomplete-snap="">-->
       <!--<md-autocomplete md-selected-item="ctrl.selectedItem" md-search-text="ctrl.searchText" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" placeholder="Search for a vegetable">-->
       <!--<span md-highlight-text="ctrl.searchText">{{item.name}} :: {{item.type}}</span>-->

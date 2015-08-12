@@ -6,7 +6,6 @@
 
 (function () {
 
-//code here
   angular.module('hintsApp.core.layout', []);
 
 }());

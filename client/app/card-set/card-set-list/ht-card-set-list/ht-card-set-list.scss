@@ -1,0 +1,14 @@
+@import "compass/css3/flexbox";
+
+$ht-card-set-list__subheader--padding-left: 72px;
+
+ht-card-set-list {
+  @include display-flex;
+  @include flex-direction(column);
+
+  .md-subheader {
+    .md-subheader-inner {
+      padding-left: $ht-card-set-list__subheader--padding-left;
+    }
+  }
+}

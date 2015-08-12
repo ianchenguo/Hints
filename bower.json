@@ -14,13 +14,14 @@
     "ramda": "~0.17.1",
     "angularfire": "~1.1.2",
     "angular-messages": "~1.4.3",
-    "angular-material": "master",
+    "angular-material": "~0.10.1",
     "jquery": "~2.1.4",
     "angular-md5": "~0.1.8",
     "velocity": "~1.2.2",
     "immutable": "~3.7.4",
     "bluebird": "~2.9.34",
-    "rxjs": "~3.0.0"
+    "rxjs": "~3.0.0",
+    "firebase-util": "~0.2.4"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

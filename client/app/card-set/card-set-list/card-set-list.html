@@ -1,20 +1,31 @@
-<md-content>
-  <md-subheader>Card Sets</md-subheader>
+<md-sidenav class="md-sidenav-right md-whiteframe-z2"
+            md-component-id="right">
 
-  <md-list>
+  <md-toolbar class="md-theme-indigo">
 
-    <ht-card-set-list-item ng-repeat="item in [1,2,3,4,5,6,7,8,9,10]">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="more" ng-click="$mdOpenMenu()">
+        <md-icon md-font-library="material-icons">close</md-icon>
+      </md-button>
 
-    </ht-card-set-list-item>
+      <h1 class="md-toolbar-tools">Card Set Details</h1>
+    </div>
 
-    <!-- list end placeholder-->
-    <ht-card-set-list-item></ht-card-set-list-item>
+  </md-toolbar>
 
-  </md-list>
+  <md-content flex layout="column">
+  </md-content>
 
+</md-sidenav>
+
+
+<md-content flex layout="column">
+  <ht-card-set-list flex layout="column" card-sets="vm.localCardSets"></ht-card-set-list>
 </md-content>
 
-<md-button class="md-fab md-fab-bottom-right"
+
+<md-button class="md-fab md-fab-top-left md-mini"
+           id="card-set-list__fab"
            aria-label="Create card set"
            ng-click="vm.createCardSet()">
   <md-icon md-font-library="material-icons">add</md-icon>
